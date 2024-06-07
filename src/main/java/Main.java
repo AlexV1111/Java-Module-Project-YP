@@ -1,6 +1,36 @@
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Scanner scanner = new Scanner(System.in);
+
+        String nameAuto;
+        int speedAuto;
+        Auto[] arrayAuto = new Auto[3];
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Введите название машины №" + (i + 1) + ":");
+            nameAuto = scanner.next();
+            while (true) {
+                System.out.println("Введите скорость машины №" + (i + 1) + ":");
+                boolean isScannerInt = scanner.hasNextInt();
+                if (isScannerInt) {
+                    speedAuto = scanner.nextInt();
+                    if (speedAuto > 0 && speedAuto <= 250) {
+                        Auto auto = new Auto(nameAuto, speedAuto);
+                        arrayAuto[i] = auto;
+                        break;
+                    } else
+                        System.out.println("Неправильная скорость");
+                } else {
+                    System.out.println("Неправильная скорость");
+                    scanner.next();
+                }
+            }
+        }
+        scanner.close();
+
+        System.out.println("Самая быстрая машина: " + Race.winnerRace(arrayAuto));
     }
 }
