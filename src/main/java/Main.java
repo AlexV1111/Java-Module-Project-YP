@@ -7,9 +7,11 @@ public class Main {
 
         String nameAuto;
         int speedAuto;
-        Auto[] arrayAuto = new Auto[3];
+        final int RIDERS = 3;
 
-        for (int i = 0; i < 3; i++) {
+        Auto[] arrayAuto = new Auto[RIDERS];
+
+        for (int i = 0; i < RIDERS; i++) {
             System.out.println("Введите название машины №" + (i + 1) + ":");
             nameAuto = scanner.next();
             while (true) {
@@ -22,9 +24,9 @@ public class Main {
                         arrayAuto[i] = auto;
                         break;
                     } else
-                        System.out.println("Неправильная скорость");
+                        System.out.println("Неправильная скорость, превышение допустимых значений");
                 } else {
-                    System.out.println("Неправильная скорость");
+                    System.out.println("Неверный ввод, введите численное значение скорости ");
                     scanner.next();
                 }
             }
